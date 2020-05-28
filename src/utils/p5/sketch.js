@@ -40,6 +40,16 @@ function sketch (p) {
     const canvas = document.getElementsByTagName("canvas")[0];
     const dataURL = canvas.toDataURL({pixelRatio: 2}).toString(); //there should be a better way to transfer this over to the getshare
     canvas.setAttribute("data-uri", dataURL.toString());
+    var a = document.createElement("a");
+    a.download = "flower.png";
+    a.href = dataURL;
+    document.body.appendChild(a);
+    a.addEventListener("click", function(e) {
+      a.parentNode.removeChild(a);
+    });
+    a.click();
+  
+   
   }
 
   p.mouseReleased = function(){
